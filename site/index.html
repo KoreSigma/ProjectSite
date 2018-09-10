@@ -1,22 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <head>
     <meta charset="UTF-8">
-    <title>KoreSigma - Index</title>
+    <title>KoreSigma</title>
 </head>
-<body>
-Pages:
-<br>
 
-<a href="plan.html">Project Plan</a><br>
-<a href="time.html">Time and Effort</a><br>
-<a href="metrics.html">Metrics</a><br>
-<a href="about.html">About</a><br>
 
-<br>
-<a href="https://github.com/KoreSigma">GitHub</a><br>
+<body ng-app="index">
 
-<br>
-<p>Note: site is under construction.</p>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">KoreSigma</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#!about">About</a>
+                <a class="nav-item nav-link" href="#!time">Time and Effort</a>
+                <a class="nav-item nav-link" href="#!plan">Project Plan</a>
+                <a class="nav-item nav-link" href="#!metrics">Metrics</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div ng-view></div>
+    
+    <script>
+    var app = angular.module("index", ["ngRoute"]);
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            templateUrl : "about.html"
+        })
+        .when("/about", {
+            templateUrl : "about.html"
+        })
+        .when("/time", {
+            templateUrl : "time.html"
+        })
+        .when("/plan", {
+            templateUrl : "plan.html"
+        })
+        .when("/metrics", {
+            templateUrl : "metrics.html"
+        });
+    });
+    </script>
 </body>
-</html>
